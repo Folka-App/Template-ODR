@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  FileManager.swift
 //  TestingODR
 //
-//  Created by M. Syulhan Al Ghofany on 11/06/23.
+//  Created by M. Syulhan Al Ghofany on 15/09/23.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class FileManager: UIViewController {
     static var progressSceneKVOContext = 0
     let array = ["harry"]
     var resourceRequest:NSBundleResourceRequest? = nil
@@ -87,24 +87,6 @@ class ViewController: UIViewController {
                 print("Image filename: \(filename)")
             }
         }
-        //        if let resourceURLs = self.resourceRequest?.bundle.urls(forResourcesWithExtension: nil, subdirectory: nil) {
-        //            for resourceURL in resourceURLs {
-        //                let filename = resourceURL.lastPathComponent
-        //                print("Resource filename: \(filename)")
-        //            }
-        //        }
-        
-        //        if currentResourceIndex < resourceURLs.count {
-        //            let resourceURL = resourceURLs[currentResourceIndex]
-        //            let filename = resourceURL.lastPathComponent
-        //            print("Resource filename: \(filename)")
-        //
-        //            // Move to the next resource
-        //            currentResourceIndex += 1
-        //
-        //            // Fetch the next resource's filename
-        //            fetchNextResourceFilename()
-        //        }
     }
     
     func loadResourceWithTag(tagArray: Array<String>) {
@@ -119,8 +101,6 @@ class ViewController: UIViewController {
                 resourceRequest?.progress.addObserver(self, forKeyPath: "fractionCompleted", options: [.new, .initial], context: &ViewController.progressSceneKVOContext)
                 resourceRequest?.beginAccessingResources(completionHandler: {(err) -> Void in
                     if err == nil {
-                        //                        resourceRequest.removeObserver(self, forKeyPath: "fractionCompleted", context: &ViewController.progressSceneKVOContext)
-                        
                         print("On-Demand Resources downloaded, wait")
                         self.displayResources()
                     } else {
