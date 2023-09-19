@@ -1,0 +1,6 @@
+framework module Pods_TestingODR {
+  umbrella header "Pods-TestingODR-umbrella.h"
+
+  export *
+  module * { export * }
+}
