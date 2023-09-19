@@ -46,7 +46,11 @@ class ODRController: UIViewController {
         buttonNext.addTarget(self, action: #selector(presentModal), for: .touchUpInside)
         view.addSubview(buttonNext)
         
-        downloadAndSaveImages()
+        if Bundle.main.path(forResource: "gedung", ofType: "jpg", inDirectory: "Assets.xcassets") != nil {
+            print("Ada gambar dengan ekstensi .jpg di bundle.")
+        } else {
+            print("Tidak ada gambar dengan ekstensi .jpg di bundle.")
+        }
     }
     
     @objc func presentModal() {
@@ -67,7 +71,7 @@ class ODRController: UIViewController {
             (result : UIAlertAction) -> Void in
             print("OK")
             
-            self.downloadAndSaveImages()
+            self.downAndSaveImg()
         }
         
         alertController.addAction(DestructiveAction)
@@ -75,6 +79,7 @@ class ODRController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // cara 1: gagal
     func downloadAndSaveImages() {
         print("masukkk")
         let tagToDownload = "harry"
@@ -114,11 +119,55 @@ class ODRController: UIViewController {
         }
     }
     
+    func downAndSaveImg() {
+        // Tag ODR yang ingin Anda periksa
+        let tagToCheck = "harry"
+        
+        // Menciptakan NSBundleResourceRequest dengan tag yang sesuai
+        let request = NSBundleResourceRequest(tags: Set([tagToCheck]), bundle: Bundle.main)
+        
+        // Memeriksa ketersediaan sumber daya dengan tag ODR yang sesuai
+        request.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent // Atur prioritas sesuai kebutuhan
+        request.beginAccessingResources { error in
+            if let error = error {
+                print("Gagal mengakses sumber daya ODR: \(error)")
+            } else {
+                // Sumber daya ODR dengan tag yang sesuai sudah diunduh dan dapat digunakan
+                print("Sumber daya ODR dengan tag \(tagToCheck) ada.")
+                
+                // Sekarang kita dapat mencari nama file gambar dalam folder asset
+                if let assetsFolderURL = Bundle.main.url(forResource: "Assets", withExtension: "xcassets"),
+                   let contents = try? FileManager.default.contentsOfDirectory(at: assetsFolderURL, includingPropertiesForKeys: nil, options: []) {
+                    print("Isi folder asset bawaan:")
+                    for assetURL in contents {
+                        print(assetURL.lastPathComponent)
+                        // Mencari gambar dengan ekstensi .jpg
+                        if assetURL.pathExtension == "jpg" {
+                            let imageName = assetURL.deletingPathExtension().lastPathComponent
+                            print("Nama file gambar: \(imageName)")
+                            
+                            // Mendapatkan URL gambar dari ODR
+                            if let odrURL = Bundle.main.url(forResource: imageName, withExtension: "jpg", subdirectory: "Assets.xcassets") {
+                                // Membaca data gambar dari ODR
+                                if let imageData = try? Data(contentsOf: odrURL),
+                                   let image = UIImage(data: imageData) {
+                                    // Simpan gambar ke file manager
+                                    self.saveImageToDocumentDirectory(image, fileName: imageName)
+                                    print("Gambar \(imageName) berhasil disimpan di file manager.")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func saveImageToDocumentDirectory(_ image: UIImage, fileName: String) {
         if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             // Gabungkan direktori dokumen dengan nama file
             let fileURL = documentDirectory.appendingPathComponent(fileName)
-
+            
             // Simpan gambar ke direktori dokumen aplikasi
             if let data = image.jpegData(compressionQuality: 1.0) {
                 do {
