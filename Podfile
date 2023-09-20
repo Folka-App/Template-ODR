@@ -7,4 +7,5 @@ target 'TestingODR' do
 
   # Pods for TestingODR
   pod 'SwiftSoup'
+  pod 'Zip', '~> 2.1'
 end

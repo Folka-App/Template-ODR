@@ -18,6 +18,12 @@
 		693763D72A35E56600C6B980 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 693763D52A35E56600C6B980 /* Main.storyboard */; };
 		693763D92A35E56700C6B980 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 693763D82A35E56700C6B980 /* Assets.xcassets */; };
 		693763DC2A35E56700C6B980 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 693763DA2A35E56700C6B980 /* LaunchScreen.storyboard */; };
+		E12EF5DC2ABAF2180038764D /* FolkaStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF5D72ABAF2180038764D /* FolkaStory.swift */; };
+		E12EF5DD2ABAF2180038764D /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF5D82ABAF2180038764D /* FileDownloader.swift */; };
+		E12EF5DE2ABAF2180038764D /* CDNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF5D92ABAF2180038764D /* CDNController.swift */; };
+		E12EF5DF2ABAF2180038764D /* UIImage+FolkaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF5DA2ABAF2180038764D /* UIImage+FolkaAsset.swift */; };
+		E12EF5E02ABAF2180038764D /* FileOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EF5DB2ABAF2180038764D /* FileOrganizer.swift */; };
+		E145A5E32AC2A07B002812F7 /* FolkaStoryResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E145A5E22AC2A07B002812F7 /* FolkaStoryResourceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		693763DD2A35E56700C6B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		994FDED8BFD60DD0F595BDF9 /* Pods_TestingODR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestingODR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE4DB9B57041D0C8EEF11AF /* Pods-TestingODR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingODR.release.xcconfig"; path = "Target Support Files/Pods-TestingODR/Pods-TestingODR.release.xcconfig"; sourceTree = "<group>"; };
+		E12EF5D72ABAF2180038764D /* FolkaStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolkaStory.swift; sourceTree = "<group>"; };
+		E12EF5D82ABAF2180038764D /* FileDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
+		E12EF5D92ABAF2180038764D /* CDNController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDNController.swift; sourceTree = "<group>"; };
+		E12EF5DA2ABAF2180038764D /* UIImage+FolkaAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FolkaAsset.swift"; sourceTree = "<group>"; };
+		E12EF5DB2ABAF2180038764D /* FileOrganizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOrganizer.swift; sourceTree = "<group>"; };
+		E145A5E22AC2A07B002812F7 /* FolkaStoryResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolkaStoryResourceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +117,11 @@
 		693763CE2A35E56600C6B980 /* TestingODR */ = {
 			isa = PBXGroup;
 			children = (
-				690C4ED72AB7155C005C2AB8 /* FMwithCDN */,
 				693763CF2A35E56600C6B980 /* AppDelegate.swift */,
 				693763D12A35E56600C6B980 /* SceneDelegate.swift */,
+				690C4ED72AB7155C005C2AB8 /* FMwithCDN */,
 				692E0E452AB9B21000A662CB /* JustODR */,
+				E12EF5D62ABAF1F40038764D /* CDN+FM */,
 				692E0E442AB9B1EE00A662CB /* FMwithODR */,
 				693763D52A35E56600C6B980 /* Main.storyboard */,
 				693763D82A35E56700C6B980 /* Assets.xcassets */,
@@ -117,6 +130,19 @@
 				692A07B62A8A0C85005F60F0 /* ModalView.swift */,
 			);
 			path = TestingODR;
+			sourceTree = "<group>";
+		};
+		E12EF5D62ABAF1F40038764D /* CDN+FM */ = {
+			isa = PBXGroup;
+			children = (
+				E12EF5D82ABAF2180038764D /* FileDownloader.swift */,
+				E12EF5DB2ABAF2180038764D /* FileOrganizer.swift */,
+				E12EF5D72ABAF2180038764D /* FolkaStory.swift */,
+				E145A5E22AC2A07B002812F7 /* FolkaStoryResourceManager.swift */,
+				E12EF5DA2ABAF2180038764D /* UIImage+FolkaAsset.swift */,
+				E12EF5D92ABAF2180038764D /* CDNController.swift */,
+			);
+			path = "CDN+FM";
 			sourceTree = "<group>";
 		};
 		F171266CAEAD73710BD3A1DB /* Frameworks */ = {
@@ -246,12 +272,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				690C4ED42AB452ED005C2AB8 /* ODRController.swift in Sources */,
+				E12EF5DE2ABAF2180038764D /* CDNController.swift in Sources */,
+				E12EF5DC2ABAF2180038764D /* FolkaStory.swift in Sources */,
+				E12EF5DF2ABAF2180038764D /* UIImage+FolkaAsset.swift in Sources */,
 				690C4ED62AB7154F005C2AB8 /* DownloadImageController.swift in Sources */,
 				693763D42A35E56600C6B980 /* ViewController.swift in Sources */,
 				693763D02A35E56600C6B980 /* AppDelegate.swift in Sources */,
 				692A07B72A8A0C85005F60F0 /* ModalView.swift in Sources */,
+				E145A5E32AC2A07B002812F7 /* FolkaStoryResourceManager.swift in Sources */,
+				E12EF5DD2ABAF2180038764D /* FileDownloader.swift in Sources */,
 				693763D22A35E56600C6B980 /* SceneDelegate.swift in Sources */,
 				692E0E432AB841F300A662CB /* ShowOneController.swift in Sources */,
+				E12EF5E02ABAF2180038764D /* FileOrganizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
